@@ -1,0 +1,6 @@
+#install
+https://wiki.archlinux.org/title/Common_Access_Card
+
+pkcs11-tool -L --module=/opt/proCertumCardManager/sc30pkcs11-3.0.5.60-MS.so
+
+

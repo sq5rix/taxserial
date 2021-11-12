@@ -1,0 +1,10 @@
+# bramka testowa
+
+https://test-e-dokumenty.mf.gov.pl/swagger/ui/index
+
+# bramka produkcyjna
+
+https://e-dokumenty.mf.gov.pl/index.html
+
+
+
