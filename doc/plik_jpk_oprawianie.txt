@@ -1,0 +1,76 @@
+Kompresja danych JPK
+
+Wygenerowany dokument JPK zostanie skompresowany do pliku w formacie ZIP oraz podzielony
+binarnie  na  części  o  wielkości  nie  przekraczającej  60  MB.  Należy  spodziewać  się  wysokiego
+stopnia kompresji co spowoduje, że scenariusz w którym będziemy mieli więcej niż jedną część,
+będzie stosunkowo rzadki.
+
+Wymagana metoda kompresji to format pliku ZIP z użyciem algorytmu DEFLATE, bez stosowania
+opcji dzielenia (split/multipart). W wyniku kompresji powinien powstać jeden plik ZIP zawierający
+pojedynczy  dokument  JPK.  Jeżeli rozmiar otrzymanego pliku ZIP przekracza 60MB, należy go
+podzielić  binarnie  na  odpowiednią  liczbę  części  o  wielkości  60MB  każda  oraz  ostatnią  część
+o rozmiarze nie  większym  niż 60MB.  Takie  podejście  z  jednej  strony  zapewnia  wykorzystanie
+znanych  i  powszechnie  stosowanych  narzędzi  oraz  łatwość  implementacji  dla różnych  platform,
+z drugiej – efektywność, w szczególności operacji kompresji i prostotę API dla tych operacji.
+
+Szyfrowanie danych JPK
+
+Skompresowane  pliki  będą  szyfrowane. Do szyfrowania plików wykorzystany będzie  algorytm
+AES256, z kluczem szyfrującym wygenerowanym po stronie klienta. W implementacji
+mechanizmu szyfrowania należy użyć następującej specyfikacji algorytmu AES:
+
+Długość klucza              Key Size                256 bits / 32 bytes
+Tryb szyfru                 Cipher Mode             CBC (Cipher Block Chaining)
+Dopełnienie                 Padding                 PKCS#7
+Rozmiar bloku               Block Size              16 bytes
+Wektor inicjujący           Initialization Vector   16 bytes
+
+Algorytm procesu szyfrowania będzie wyglądał następująco:
+
+* klient generuje losowy, 256 bitowy klucz,
+* wygenerowanym  kluczem  szyfrowane  są  wszystkie  części  skompresowanego  archiwum
+(zgodnie z pkt. 1.1) - algorytmem szyfrującym jest AES256.
+
+* klucz szyfrujący jest szyfrowany z wykorzystaniem algorytmu asymetrycznego RSA,
+z wykorzystaniem  certyfikatu  klucza  publicznego  udostępnionego  przez  Ministerstwo
+Finansów,
+
+* zaszyfrowany  klucz  jest  dołączany  do  pliku  metadanych,  zgodnie  z  przedstawionym
+poniżej opisem tego pliku.
+
+Szyfrowanie klucza szyfrującego
+
+Szyfrowanie klucza  szyfrującego  należy  wykonać  algorytmem asymetrycznym RSA
+z wykorzystaniem certyfikatu klucza publicznego udostępnionego przez Ministerstwo Finansów.
+W implementacji mechanizmu szyfrowania należy użyć następującej specyfikacji algorytmu RSA:
+
+Długość klucza              Key Size                256 bits / 32 bytes
+Tryb szyfru                 Cipher Mode             ECB (Electronic Codebook)
+Dopełnienie                 Padding                 PKCS#1
+Rozmiar bloku               Block Size              256 bytes
+
+Przygotowanie metadanych uwierzytelniających
+
+Po  przygotowaniu  zasadniczych  dokumentów  zgodnych  ze  schematem  Jednolitego  Pliku
+Kontrolnego  (JPK),  klient,  w  celu  wysłania  danych,  musi  przygotować  dane  uwierzytelniające,
+mające postać odpowiedniego XML, przesłane w metodzie InitUploadSigned (opisanej
+w następnym rozdziale).
+Plik metadanych musi być uwierzytelniony jedną z technik:
+1. użycie:
+a. podpisu kwalifikowanego (polski lub europejski),
+b. podpisu zaufanego
+2. umieszczenie elementu AuthData zawierającego zaszyfrowane dane autoryzujące
+
+Podpis kwalifikowany lub podpis zaufany
+
+Plik  metadanych  musi  być  podpisany  cyfrowo  podpisem kwalifikowanym polskim
+lub europejskim  albo  podpisem  zaufanym  zgodnie  z  algorytmem  XAdES  Basic  Electronic
+Signature  w  postaci  pliku  XML  zgodnego  ze  schematem  http://www.w3.org/2000/09/xmldsig,
+w skrócie  XAdES-BES w wersji Enveloped (podpis jako dodatkowy element ds:Signature
+w oryginalnym XML)  lub  Enveloping  (oryginalny  dokument zawarty  jako element  w  podpisanej
+strukturze). Przy podpisywaniu można dokonać transformacji obiektu  podpisywanego  zgodnie
+z kodowaniem http://www.w3.org/2000/09/xmldsig#base64.
+Funkcją skrótu wykorzystywaną w podpisie powinna być RSA-SHA256.
+Przykład metadanych uwierzytelniających można znaleźć w p. 2.2.1, gdzie omówiona jest metoda
+InitUploadSigned, przyjmująca metadane uwierzytelniające.
+

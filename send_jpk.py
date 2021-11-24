@@ -1,21 +1,27 @@
 # -*- coding: utf-8 -*-
 
+import io
+
 from Crypto.Cipher import AES, PKCS1_v1_5
 from Crypto.Hash import SHA256, MD5
 from Crypto.PublicKey import RSA
+from Crypto.Util.Padding import pad, unpad
 from Crypto import Random
 
 import base64, zipfile, json, requests, sys, string, re
-
-from io import StringIO
 
 MF_URL= 'https://test-e-dokumenty.mf.gov.pl/api/Storage'
 KEY_SIZE= 32 # AES256
 BS= 16
 
-padding= lambda s: s + (BS - len(s) % BS) * chr(BS - len(s) % BS)
-
 requests.packages.urllib3.disable_warnings() # Tymczasowo
+
+def utworzenie_archiwum_zip(jpk_nazwa, jpk_xml):
+    # Utworzenie archiwum zip z plikiem jpk
+    zip_buffer = io.BytesIO()
+    with zipfile.ZipFile(zip_buffer, mode='w', compression=zipfile.ZIP_DEFLATED) as zf:
+        zf.writestr(jpk_nazwa, io.BytesIO(jpk_xml).getvalue())
+    return zip_buffer.getvalue()
 
 def init_upload(jpk_nazwa):
     """
@@ -42,18 +48,14 @@ def init_upload(jpk_nazwa):
     xml_hash.update(jpk_xml)
     jpk['xml_hash']= base64.b64encode(xml_hash.digest())
 
-    # Utworzenie archiwum zip z plikiem jpk
-    zipio= StringIO()
-    with zipfile.ZipFile(zipio, mode='w', compression= zipfile.ZIP_DEFLATED) as zf:
-        zf.writestr(jpk_nazwa, jpk_xml)
-    jpk_zip= zipio.getvalue()
+    jpk_zip = utworzenie_archiwum_zip(jpk_nazwa, jpk_xml)
 
     # szyfrowanie pliku
     iv= Random.new().read(16)
     jpk['iv']= base64.b64encode(iv)
 
     obj= AES.new(key, AES.MODE_CBC, iv)
-    jpk_aes= obj.encrypt(padding(jpk_zip))
+    jpk_aes= obj.encrypt(pad(jpk_zip, BS))
 
     # md5 zaszyfrowanego archiwum zip
     md5= MD5.new()
