@@ -1,2 +1,5 @@
+pycryptodome
+requests
+urllib3[secure]
 python-pkcs11
 PyKCS11

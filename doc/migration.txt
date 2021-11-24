@@ -1,0 +1,9 @@
+https://github.com/wlodekf/wjpk
+
+StringIO
+https://stackoverflow.com/questions/11914472/stringio-in-python3
+
+time.clock
+https://stackoverflow.com/questions/58569361/attributeerror-module-time-has-no-attribute-clock-in-python-3-8
+
+

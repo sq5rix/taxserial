@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<JPK xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2020/03/11/eD/DefinicjeTypy/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://crd.gov.pl/wzor/2020/05/08/9393/ http://crd.gov.pl/wzor/2020/05/08/9393/schemat.xsd" xmlns="http://crd.gov.pl/wzor/2020/05/08/9393/">
+      <Naglowek>
+        <KodFormularza kodSystemowy="JPK_V7M (1)" wersjaSchemy="1-2E">JPK_VAT</KodFormularza>
+        <WariantFormularza>1</WariantFormularza>
+        <DataWytworzeniaJPK>2021-11-24T15:57:32.669670</DataWytworzeniaJPK>
+        <NazwaSystemu>Formularz uproszczony</NazwaSystemu>
+        <CelZlozenia poz="P_7">1</CelZlozenia>
+        <KodUrzedu>1436</KodUrzedu>
+        <Rok>2021</Rok>
+        <Miesiac>10</Miesiac>
+      </Naglowek>
+      <Podmiot1 rola="Podatnik">
+        <OsobaNiefizyczna>
+          <NIP>5263462930</NIP>
+          <PelnaNazwa>MUCHEN WORLD SL</PelnaNazwa>
+   <Email>jpk@chineuro.eu</Email>
+        </OsobaNiefizyczna>
+      </Podmiot1>
+        <Deklaracja>
+    <Naglowek>
+      <KodFormularzaDekl kodSystemowy="VAT-7 (21)" kodPodatku="VAT" rodzajZobowiazania="Z" wersjaSchemy="1-2E">VAT-7</KodFormularzaDekl>
+      <WariantFormularzaDekl>21</WariantFormularzaDekl>
+    </Naglowek>
+
+        <PozycjeSzczegolowe>
+  <P_13>0</P_13>
+  <P_19>1089</P_19>
+  <P_20>250</P_20>
+  <P_21>0</P_21>
+  <P_22>0</P_22>
+  <P_37>1089</P_37>
+  <P_38>250</P_38>
+  <P_48>0</P_48>
+  <P_51>250</P_51>
+  <P_68>0</P_68>
+  <P_69>0</P_69>
+</PozycjeSzczegolowe>
+        <Pouczenia>1
+</Pouczenia>
+</Deklaracja>
+        <Ewidencja>
+        <SprzedazWiersz>
+  <LpSprzedazy>1</LpSprzedazy>
+  <NrKontrahenta>Brak</NrKontrahenta>
+  <NazwaKontrahenta>Brak Kontrahenta</NazwaKontrahenta>
+  <DowodSprzedazy>8140182530095305</DowodSprzedazy>
+  <DataWystawienia>2021-10-11</DataWystawienia>
+  <DataSprzedazy>2021-10-11</DataSprzedazy>
+  <K_19>534.19</K_19>
+  <K_20>122.84</K_20>
+</SprzedazWiersz>
+        <SprzedazWiersz>
+  <LpSprzedazy>2</LpSprzedazy>
+  <NrKontrahenta>Brak</NrKontrahenta>
+  <NazwaKontrahenta>Brak Kontrahenta</NazwaKontrahenta>
+  <DowodSprzedazy>8140397589581149</DowodSprzedazy>
+  <DataWystawienia>2021-10-17</DataWystawienia>
+  <DataSprzedazy>2021-10-17</DataSprzedazy>
+  <K_19>148.68</K_19>
+  <K_20>34.21</K_20>
+</SprzedazWiersz>
+        <SprzedazWiersz>
+  <LpSprzedazy>3</LpSprzedazy>
+  <NrKontrahenta>Brak</NrKontrahenta>
+  <NazwaKontrahenta>Brak Kontrahenta</NazwaKontrahenta>
+  <DowodSprzedazy>8140023117376180</DowodSprzedazy>
+  <DataWystawienia>2021-10-06</DataWystawienia>
+  <DataSprzedazy>2021-10-06</DataSprzedazy>
+  <K_19>296.32</K_19>
+  <K_20>68.13</K_20>
+</SprzedazWiersz>
+        <SprzedazWiersz>
+  <LpSprzedazy>4</LpSprzedazy>
+  <NrKontrahenta>Brak</NrKontrahenta>
+  <NazwaKontrahenta>Brak Kontrahenta</NazwaKontrahenta>
+  <DowodSprzedazy>8140016080653314</DowodSprzedazy>
+  <DataWystawienia>2021-10-14</DataWystawienia>
+  <DataSprzedazy>2021-10-14</DataSprzedazy>
+  <K_19>171.31</K_19>
+  <K_20>39.39</K_20>
+</SprzedazWiersz>
+        <SprzedazWiersz>
+  <LpSprzedazy>5</LpSprzedazy>
+  <NrKontrahenta>Brak</NrKontrahenta>
+  <NazwaKontrahenta>Brak Kontrahenta</NazwaKontrahenta>
+  <DowodSprzedazy>3013737378188016</DowodSprzedazy>
+  <DataWystawienia>2021-10-23</DataWystawienia>
+  <DataSprzedazy>2021-10-23</DataSprzedazy>
+  <K_19>296.57</K_19>
+  <K_20>68.19</K_20>
+</SprzedazWiersz>
+        <SprzedazWiersz>
+  <LpSprzedazy>6</LpSprzedazy>
+  <NrKontrahenta>Brak</NrKontrahenta>
+  <NazwaKontrahenta>Brak Kontrahenta</NazwaKontrahenta>
+  <DowodSprzedazy>3013508707161798</DowodSprzedazy>
+  <DataWystawienia>2021-10-06</DataWystawienia>
+  <DataSprzedazy>2021-10-06</DataSprzedazy>
+  <K_19>296.32</K_19>
+  <K_20>68.13</K_20>
+</SprzedazWiersz>
+        <SprzedazWiersz>
+  <LpSprzedazy>7</LpSprzedazy>
+  <NrKontrahenta>Brak</NrKontrahenta>
+  <NazwaKontrahenta>Brak Kontrahenta</NazwaKontrahenta>
+  <DowodSprzedazy>8138908932567245</DowodSprzedazy>
+  <DataWystawienia>2021-09-17</DataWystawienia>
+  <DataSprzedazy>2021-09-17</DataSprzedazy>
+  <K_19>-654.34</K_19>
+  <K_20>-150.47</K_20>
+</SprzedazWiersz>
+        <SprzedazCtrl>
+  <LiczbaWierszySprzedazy>7</LiczbaWierszySprzedazy>
+  <PodatekNalezny>250.42</PodatekNalezny>
+</SprzedazCtrl> <ZakupCtrl>
+      <LiczbaWierszyZakupow>0</LiczbaWierszyZakupow>
+      <PodatekNaliczony>0.00</PodatekNaliczony>
+    </ZakupCtrl>
+    
+</Ewidencja>
+</JPK>
