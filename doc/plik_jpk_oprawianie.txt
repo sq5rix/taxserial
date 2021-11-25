@@ -55,11 +55,13 @@ Po  przygotowaniu  zasadniczych  dokumentów  zgodnych  ze  schematem  Jednolite
 Kontrolnego  (JPK),  klient,  w  celu  wysłania  danych,  musi  przygotować  dane  uwierzytelniające,
 mające postać odpowiedniego XML, przesłane w metodzie InitUploadSigned (opisanej
 w następnym rozdziale).
+
 Plik metadanych musi być uwierzytelniony jedną z technik:
+
 1. użycie:
-a. podpisu kwalifikowanego (polski lub europejski),
-b. podpisu zaufanego
-2. umieszczenie elementu AuthData zawierającego zaszyfrowane dane autoryzujące
+    a. podpisu kwalifikowanego (polski lub europejski),
+    b. podpisu zaufanego
+    2. umieszczenie elementu AuthData zawierającego zaszyfrowane dane autoryzujące
 
 Podpis kwalifikowany lub podpis zaufany
 
@@ -73,4 +75,91 @@ z kodowaniem http://www.w3.org/2000/09/xmldsig#base64.
 Funkcją skrótu wykorzystywaną w podpisie powinna być RSA-SHA256.
 Przykład metadanych uwierzytelniających można znaleźć w p. 2.2.1, gdzie omówiona jest metoda
 InitUploadSigned, przyjmująca metadane uwierzytelniające.
+
+Dane autoryzujące
+
+W przypadku korzystania z metody autoryzacji kwotą należy uzupełnić element AuthData:
+            <xs:element name="AuthData" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>To opcjonalne pole powinno zawierać
+dokument XML zgodny z opublikowaną schemą SIG-2008_v2-0.xsd zaszyfrowany z
+wykorzystaniem algorytmu symetrycznego AES256. Powinien zostać wykorzystany ten
+sam klucz, który jest wykorzystywany do szyfrowania części skompresowanego
+archiwum pliku JPK i załączany do niniejszego pliku metadanych. Algorytm
+kodowania zaszyfrowanych danych to Base64.</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+
+Pole to powinno zawierać dokument XML zgodny z opublikowanym schematem
+SIG-2008_v2-0.xsd zaszyfrowany z wykorzystaniem algorytmu symetrycznego
+AES256 (generowany  po  stronie  klienta).  Powinien  zostać  wykorzystany  ten sam klucz,
+który jest wykorzystywany  do  szyfrowania  części  skompresowanego archiwum pliku
+JPK i załączany do pliku metadanych. Algorytm kodowania zaszyfrowanych danych to Base64.
+
+Parametry szyfrowania danych autoryzujących:
+
+Długość klucza                  Key Size                256 bits / 32 bytes
+Tryb szyfru                     Cipher Mode             CBC (Cipher Block Chaining)
+Dopełnienie                     Padding                 PKCS#7
+Rozmiar bloku                   Block Size              16 bytes
+Wektor inicjujący               Initialization Vector   16 bytes
+
+Pełnomocnictwo
+
+System weryfikuje czy osobie, która składa dokument w imieniu firmy lub podatnika z użyciem
+podpisu (podpis kwalifikowany lub podpis zaufany)  zostało  udzielone  pełnomocnictwo
+do podpisywania deklaracji składanej za pomocą środków komunikacji elektronicznej UPL-
+
+W  przypadku  składania  dokumentu  w  imieniu  firmy  lub  podatnika  z  użyciem  podpisu
+kwalifikowanego  lub  podpisu  zaufanego  wymagane  jest zarejestrowanie w urzędzie skarbowym
+pełnomocnictwa do podpisywania deklaracji składanych drogą elektroniczną.
+Brak  lub  błędnie  nadane  pełnomocnictwo  będzie  skutkowało  zakończeniem  przetwarzaniem
+dokumentu z kodem błędu 420 zwracanym przez metodę Status.
+W  przypadku  podpisu  kwalifikowanego  wydanego  przez  polskie  centrum  certyfikacji,  certyfikat
+powinien zawierać PESEL lub NIP właściciela podpisu.
+Pełnomocnictwo nie jest sprawdzane w przypadku użycia danych autoryzujących
+
+Implementacja środowiska testowego dostępna jest pod adresem:
+https://test-e-dokumenty.mf.gov.pl/
+
+Natomiast adresy poszczególnych metod przedstawiają się następująco:
+https://test-e-dokumenty.mf.gov.pl/api/Storage/InitUploadSigned
+https://test-e-dokumenty.mf.gov.pl/api/Storage/Status/{referenceNumber}
+https://test-e-dokumenty.mf.gov.pl/api/Storage/FinishUpload
+
+Adresy magazynów chmurowych do których wysyłane są pliki JPK:
+https://taxdocumentstorage00tst.blob.core.windows.net
+https://taxdocumentstorage01tst.blob.core.windows.net
+https://taxdocumentstorage02tst.blob.core.windows.net
+
+12
+https://taxdocumentstorage97tst.blob.core.windows.net
+https://taxdocumentstorage98tst.blob.core.windows.net
+https://taxdocumentstorage99tst.blob.core.windows.net
+
+Implementacja środowiska produkcyjnego dostępna jest pod adresem:
+https://e-dokumenty.mf.gov.pl/
+
+Natomiast adresy poszczególnych metod przedstawiają się następująco:
+https://e-dokumenty.mf.gov.pl/api/Storage/InitUploadSigned
+https://e-dokumenty.mf.gov.pl/api/Storage/Status/{referenceNumber}
+https://e-dokumenty.mf.gov.pl/api/Storage/FinishUpload
+
+Adresy magazynów chmurowych do których wysyłane są pliki JPK:
+https://taxdocumentstorage00.blob.core.windows.net
+https://taxdocumentstorage01.blob.core.windows.net
+https://taxdocumentstorage02.blob.core.windows.net
+...
+https://taxdocumentstorage97.blob.core.windows.net
+https://taxdocumentstorage98.blob.core.windows.net
+https://taxdocumentstorage99.blob.core.windows.net
+
+wykorzystywane nazwy domenowe można weryfikować za pomocą wyrażenia regularnego:
+https:[/]{2}taxdocumentstorage[0-9]{2}.blob.core.windows.net[/](.*)
+
+Poniżej znajduje się szczegółowy opis działania metod
+
 

@@ -69,9 +69,9 @@ def init_upload(jpk_nazwa):
     with open(jpk['zip_nazwa']+'.aes', 'wb') as f:
         f.write(jpk_aes)
 
-    initupload_xml= open('initupload.tpl', 'rb')
+    initupload_xml= open('initupload.tpl', 'r')
     templ= string.Template( initupload_xml.read() )
-    initupload_xml= templ.substitute(jpk)
+    initupload_xml= templ.substitute(jpk).encode('utf-8')
 
     # Zapisanie pliku initupload.xml
     with open(jpk_nazwa[:-4]+'-initupload.xml', 'wb') as f:
@@ -135,8 +135,9 @@ def upload_status(ref= None, jpk_nazwa= None):
 
 def main():
     f = "5263462930_jpk.xml"
+    x = "5263462930_jpk.xml.xades"
     init_upload(f)
-    #upload(argv[2])
+    upload(x)
     #upload_status(jpk_nazwa= argv[2])
 
 if __name__ == "__main__":
