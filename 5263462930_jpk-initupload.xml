@@ -2,7 +2,7 @@
 <InitUpload xmlns="http://e-dokumenty.mf.gov.pl">
     <DocumentType>JPK</DocumentType>
     <Version>01.02.01.20160617</Version>
-    <EncryptionKey algorithm="RSA" mode="ECB" padding="PKCS#1" encoding="Base64">b'mmKRJvNiDIpHX2GynCE1b7eHqzIu/yb576kihfrLt31E9X/vVo9EM9956h7hx3cIzoKqudHH6qG2G9YSmyhjMcXt074fXbmzlAsIjORE931uqQZJJRiR+O2wITJwsyeqEUn8XrWGPblk+00Z4Z1d9SiLSEwIbmy4NiwmjftN7554XLg8fP++IaJEJyOUkdyx6RvWEd3R6/KwEFP7r4HzZUqpRFFL+kUSqll9rok+S8d273tesbekyzPvoZbSZ04ErYVKmQHdRvzjcgT/jgwRasX1O3kVGqCW7bk2JPOQ56LDX/p5BK/c2NFpny8BavGarum+gEvZVB3yRRvGUIhj4A=='</EncryptionKey>
+    <EncryptionKey algorithm="RSA" mode="ECB" padding="PKCS#1" encoding="Base64">b'qweeywFv6jHo0AiBX2vjclKgiVEL0LCFhgEnDK6ZTF/CeAzM3dEaKiwLV06sCozpmOAc+o9ZP8zb4081yPxEf4Setw6CmPbDeWsCHrmkYP5oWv01K501uMXvpPAB6x+h+NcIMlsIDmlMzqQ7UkrKdIKPIwqbCVqFGIzl1qiNY2uj4Sms3960o5BuS2M6AQwOoEcn4iwF8LxaSzZ++4OFmI6ead6h0MRo39rDra8zEnKoHLFauZYwRxn24WdrX4t3BwovW7nsUN8kzUKvB7oBtxFh2dXthzmZHyyPkyEOrAm7EUhe0ujkwJeIMyZOlzCCRCbWVeFIR2En1PPXlMsBeQ=='</EncryptionKey>
     <DocumentList>
         <Document>
             <FormCode systemCode="b'JPK_V7M' (1)" schemaVersion="1-0">b'JPK_V7M'</FormCode>
@@ -15,14 +15,14 @@
                 </Packaging>
                 <Encryption>
                     <AES size="256" block="16" mode="CBC" padding="PKCS#7">
-                        <IV bytes="16" encoding="Base64">b'UXRKwtQl0RZpQv36RiJp2Q=='</IV>
+                        <IV bytes="16" encoding="Base64">b'141sDgz06/TTM8Xo+HXiZw=='</IV>
                     </AES>
                 </Encryption>
                 <FileSignature>
                     <OrdinalNumber>1</OrdinalNumber>
                     <FileName>5263462930_jpk.zip</FileName>
                     <ContentLength>1259</ContentLength>
-                    <HashValue algorithm="MD5" encoding="Base64">b'Yiozin/GYp0AmEWjIXc/dQ=='</HashValue>
+                    <HashValue algorithm="MD5" encoding="Base64">b'52Ujm9OvjBAwqHIBCRPIBg=='</HashValue>
                 </FileSignature>
             </FileSignatureList>
         </Document>

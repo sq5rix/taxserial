@@ -137,7 +137,7 @@ def main():
     f = "5263462930_jpk.xml"
     x = "5263462930_jpk.xml.xades"
     init_upload(f)
-    upload(x)
+    #upload(x)
     #upload_status(jpk_nazwa= argv[2])
 
 if __name__ == "__main__":
