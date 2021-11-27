@@ -1,0 +1,37 @@
+We are looking for a full-stack developer
+
+Our team develops, manages and maintains a management tool for processing sales platforms
+(Amazon, Aliexpress, etc.) data for our clients and reporting to EU tax offices
+
+Responsibilities
+
+Essential duties and responsibilities include the following. Other duties may be assigned.
+
+    You will handle all phases of the project development
+    You will be responsible for
+        Developing new functionalities
+        Maintaning the application code
+        Partnering with the business and helping streamline the front-to-back flows with a view of reducing technical debt.
+
+Required Skills:
+
+    Python, java, javascript, development skills and hands-on experience
+    Flask, API, bluestrap, html experience
+    XML, JSON experience
+    Docker experience
+
+Desired skills:
+
+    Crypto tech - data, encryption, decryption, smartcards
+    Postgresql postgresql experience
+    RabbitMQ experience
+    Algorithms and code refactoring
+    Tax reporting experience, accounting basics
+
+TaxSpace Company
+
+TaxSpace office at Pańska, Warsaw, Poland
+
+    Competitive salary
+    Remote work
+    IT equipment

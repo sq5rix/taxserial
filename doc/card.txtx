@@ -1,6 +1,11 @@
 #install
 https://wiki.archlinux.org/title/Common_Access_Card
 
+https://wiki.archlinux.org/title/Smartcards
+
 pkcs11-tool -L --module=/opt/proCertumCardManager/sc30pkcs11-3.0.5.60-MS.so
 
+# uruchomienie daemona karty
 
+systemctl enable pcscd.socket
+systemctl start pcscd.socket

@@ -10,6 +10,8 @@ from Crypto import Random
 
 import base64, zipfile, json, requests, sys, string, re
 
+from encrypt_hw import encrypt_file
+
 MF_URL= 'https://test-e-dokumenty.mf.gov.pl/api/Storage'
 KEY_SIZE= 32 # AES256
 BS= 16
@@ -20,7 +22,7 @@ def utworzenie_archiwum_zip(jpk_nazwa, jpk_xml):
     # Utworzenie archiwum zip z plikiem jpk
     zip_buffer = io.BytesIO()
     with zipfile.ZipFile(zip_buffer, mode='w', compression=zipfile.ZIP_DEFLATED) as zf:
-        zf.writestr(jpk_nazwa, io.BytesIO(jpk_xml).getvalue())
+        zf.writestr(jpk_nazwa, io.BytesIO(jpk_xml).getvalue().decode('utf-8'))
     return zip_buffer.getvalue()
 
 def init_upload(jpk_nazwa):
@@ -31,9 +33,11 @@ def init_upload(jpk_nazwa):
 
     jpk_xml= open(jpk_nazwa, 'rb').read()
     jpk= {'xml_nazwa': jpk_nazwa,
-          'kod': re.search(b'kodSystemowy="(\w+) ', jpk_xml).group(1),
+          'kod': re.search(b'kodSystemowy="(\w+) ', jpk_xml).group(1).decode('utf-8'),
           'xml_len': len(jpk_xml)
          }
+
+    print('jpk: ', jpk)
 
     # losowy 256 bitowy klucz szyfrowania
     key= Random.new().read(KEY_SIZE)
@@ -76,16 +80,17 @@ def init_upload(jpk_nazwa):
     # Zapisanie pliku initupload.xml
     with open(jpk_nazwa[:-4]+'-initupload.xml', 'wb') as f:
         f.write(initupload_xml)
+    return iv
 
 
 def upload(jpk_xades):
 
-    initupload_xml= open(jpk_xades, 'rb').read()
+    initupload_xml = open(jpk_xades, 'rb').read()
     jpk_nazwa= jpk_xades.split('-initupload.')[0]
 
     print('Wysylanie %s...'%jpk_xades)
     headers= {'Content-Type': 'application/xml'}
-    resp= requests.post(MF_URL+'/InitUploadSigned', data= initupload_xml, headers= headers, verify= False)
+    resp= requests.post(MF_URL+'/InitUploadSigned', data=initupload_xml, headers=headers, verify=False)
     if resp.status_code != 200:
         print('InitUploadSigned', resp.status_code, repr(resp.text))
         return
@@ -135,10 +140,14 @@ def upload_status(ref= None, jpk_nazwa= None):
 
 def main():
     f = "5263462930_jpk.xml"
-    x = "5263462930_jpk.xml.xades"
-    init_upload(f)
-    #upload(x)
-    #upload_status(jpk_nazwa= argv[2])
+    x = "5263462930_jpk-initupload.xml.xades"
+    iv = init_upload(f)
+    crypttext = encrypt_file(iv, '5263462930_jpk.zip.aes')
+    print('crypttext : ', crypttext)
+    with open(x, 'wb') as xs:
+        xs.write(crypttext)
+    reference = upload(x)
+    #upload_status(jpk_nazwa=f)
 
 if __name__ == "__main__":
     main()

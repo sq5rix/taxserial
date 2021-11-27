@@ -27,6 +27,8 @@ with token.open(user_pin=PIN) as session:
     iv = session.generate_random(128)  # AES blocks are fixed at 128 bits
     # Encrypt our data
     crypttext = key.encrypt(data, mechanism_param=iv)
-    print('crypttext : ', crypttext )
+    print('crypttext : ', crypttext)
+    decrypted_bytes = key.decrypt(iv, crypttext)
+    print('decrypted_bytes : ', decrypted_bytes )
 
 
