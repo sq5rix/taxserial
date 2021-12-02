@@ -1,0 +1,3 @@
+https://github.com/PeculiarVentures/xadesjs
+https://github.com/PeculiarVentures/node-webcrypto-p11
+

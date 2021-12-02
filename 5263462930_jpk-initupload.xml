@@ -2,7 +2,7 @@
 <InitUpload xmlns="http://e-dokumenty.mf.gov.pl">
     <DocumentType>JPK</DocumentType>
     <Version>01.02.01.20160617</Version>
-    <EncryptionKey algorithm="RSA" mode="ECB" padding="PKCS#1" encoding="Base64">b'BwiQMveCpWcsfkneTAHpv1goi1JbI4tpDYmqtU8ENrk1tgZncxKmwtNlp3U8Sq1CvlYeGbTziqcLXuRw1C5lmujrgBFviTXnNFChNUekMmTUnGRciLmKK0VBxtHjFnegxJSHBWfBbpByNQDJ89QQrYvH8y7YQGT+ThT3WIp3DDOohV1ShXeLZmd6L/aD0hQv49m/hLhrIJPzFYsFxDoCmrR+taz5YRc4T1fQ6TKW7u4stsccnBp1kaa9nIyMP+Vb6Nz9biPxXpfydrQpE0MQbVdvrJJ6IU3QVlG0wkVm4RxsaiYnWVLLqlmYq63P9fhpa1KDKsSfBmiKTI3CXub2ZA=='</EncryptionKey>
+    <EncryptionKey algorithm="RSA" mode="ECB" padding="PKCS#1" encoding="Base64">b'rK0Tgu4In+3oW9PSHZhXqATfViiLL2zdzssGZX9F8hONWgyyAUsmYntmaBqXz4W47ZKHuWPPlkVtoE3swjyLDyJTU1PYzKfL+siHLb+m5qzy2IGatgYlTXBA+W16O/aqe/3v7CpWkPvxpvHv8faxyNr9HGYbrR8/dhbfC8UAKjtMs/r9MwDi1NAFCQ1UZRfitRZFuCYlT3hDtb3N7j4NWhdwegbdoHrNgFn7OoS3rGH+mxP0+e7b4eWRF9UWHNkR9Z8XSjTkLOVVgcV770HAHgSYpWeBknK1Ko5q2Cy4RbHoCn4a6glnM3HiOeNH/xoDg/O14HNn2zGugycoOzuaQA=='</EncryptionKey>
     <DocumentList>
         <Document>
             <FormCode systemCode="JPK_V7M (1)" schemaVersion="1-0">JPK_V7M</FormCode>
@@ -15,14 +15,14 @@
                 </Packaging>
                 <Encryption>
                     <AES size="256" block="16" mode="CBC" padding="PKCS#7">
-                        <IV bytes="16" encoding="Base64">b'ITXket8tzYRmdT1BBAH39w=='</IV>
+                        <IV bytes="16" encoding="Base64">b'R05/NDB3RdKkw61AvpS12Q=='</IV>
                     </AES>
                 </Encryption>
                 <FileSignature>
                     <OrdinalNumber>1</OrdinalNumber>
                     <FileName>5263462930_jpk.zip</FileName>
                     <ContentLength>1259</ContentLength>
-                    <HashValue algorithm="MD5" encoding="Base64">b'h+82zUsntlFLmLAzG0uzVQ=='</HashValue>
+                    <HashValue algorithm="MD5" encoding="Base64">b'KNmoCAJyKPhEXG9g52faCw=='</HashValue>
                 </FileSignature>
             </FileSignatureList>
         </Document>

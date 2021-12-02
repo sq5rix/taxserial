@@ -10,7 +10,7 @@ from Crypto import Random
 
 import base64, zipfile, json, requests, sys, string, re
 
-from encrypt_hw import encrypt_file
+from certumsign.py import
 
 MF_URL= 'https://test-e-dokumenty.mf.gov.pl/api/Storage'
 KEY_SIZE= 32 # AES256
@@ -142,10 +142,10 @@ def main():
     f = "5263462930_jpk.xml"
     x = "5263462930_jpk-initupload.xml.xades"
     iv = init_upload(f)
-    crypttext = encrypt_file(iv, '5263462930_jpk.zip.aes')
-    print('crypttext : ', crypttext)
-    with open(x, 'wb') as xs:
-        xs.write(crypttext)
+    data, sig = sign_file('5263462930_jpk.zip.aes')
+    with open(x, 'wb') as fp:
+         fp.write(data)
+         fp.write(sig)
     reference = upload(x)
     #upload_status(jpk_nazwa=f)
 

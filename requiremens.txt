@@ -1,5 +1,9 @@
 pycryptodome
+cryptography
+Pillow
 requests
 urllib3[secure]
 python-pkcs11
 PyKCS11
+endesive==2.0.6
+

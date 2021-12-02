@@ -9,3 +9,6 @@ pkcs11-tool -L --module=/opt/proCertumCardManager/sc30pkcs11-3.0.5.60-MS.so
 
 systemctl enable pcscd.socket
 systemctl start pcscd.socket
+
+# archiwum  certum
+https://files.certum.eu/software/SimplySignDesktop/Linux-Ubuntu/

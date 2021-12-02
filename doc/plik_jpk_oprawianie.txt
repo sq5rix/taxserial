@@ -72,6 +72,7 @@ w skrócie  XAdES-BES w wersji Enveloped (podpis jako dodatkowy element ds:Signa
 w oryginalnym XML)  lub  Enveloping  (oryginalny  dokument zawarty  jako element  w  podpisanej
 strukturze). Przy podpisywaniu można dokonać transformacji obiektu  podpisywanego  zgodnie
 z kodowaniem http://www.w3.org/2000/09/xmldsig#base64.
+
 Funkcją skrótu wykorzystywaną w podpisie powinna być RSA-SHA256.
 Przykład metadanych uwierzytelniających można znaleźć w p. 2.2.1, gdzie omówiona jest metoda
 InitUploadSigned, przyjmująca metadane uwierzytelniające.
